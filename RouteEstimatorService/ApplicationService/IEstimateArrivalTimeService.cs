@@ -7,6 +7,6 @@ namespace RouteEstimatorService.ApplicationService
 
     public interface IEstimateArrivalTimeService
     {
-        Task GetRouteEstimates(DateTime currentTime, int stopNumber, int routeNumber);
+        Task<Response> GetRouteEstimates(DateTime currentTime, int stopNumber);
     }
 }

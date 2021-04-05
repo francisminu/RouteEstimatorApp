@@ -1,17 +1,25 @@
-﻿using Microsoft.AspNetCore.Mvc;
-using Microsoft.Extensions.Logging;
-using RouteEstimatorApi.RequestModels;
-using RouteEstimatorApi.ResponseModels;
-using RouteEstimatorService.ApplicationService;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
+﻿#region fileHeader
+
+// <application>RouteEstimatorApplication</application> 
+// <module>InventoryControl.Api</module>
+// <author>Francis, Minu</author> 
+// <createddate>2020-01-15</createddate>
+// <lastchangedby>Varghese, Biju</lastchangedby>
+// <lastchangeddate>2020-07-13</lastchangeddate>
+
+#endregion
 
 namespace RouteEstimatorApi.Controllers
 {
+    using Microsoft.AspNetCore.Mvc;
+    using Microsoft.Extensions.Logging;
+    using RouteEstimatorApi.RequestModels;
+    using RouteEstimatorApi.ResponseModels;
+    using RouteEstimatorService.ApplicationService;
+    using System.Threading.Tasks;
+
     [ApiController]
-    [Route("api/route")]
+    [Route("api")]
     public class RouteController : ControllerBase
     {
         
@@ -27,11 +35,12 @@ namespace RouteEstimatorApi.Controllers
         }
 
         [HttpPut]
-        [Route("estimations/get")]
-        public async Task<GetRouteEstimatesResponseModel> GetRouteEstimates(GetRouteEstimatesRequestModel requestModel)
+        //[Route("estimations/get")]
+        public async Task<Response> GetRouteEstimates(GetRouteEstimatesRequestModel requestModel)
         {
-            await _estimateArrivalTimeService.GetRouteEstimates(requestModel.CurrentTime, requestModel.StopNumber, requestModel.RouteNumber);
-            return new GetRouteEstimatesResponseModel();
+            _logger.LogInformation("Test log!"); // please check the debug console to see the logs being written
+            var result = await _estimateArrivalTimeService.GetRouteEstimates(requestModel.CurrentTime, requestModel.StopNumber);
+            return result;
         }
     }
 }
