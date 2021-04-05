@@ -1,6 +1,8 @@
 # sphinx build folder
 _build
 
+**/node_modules
+**/e2e
 #ignore thumbnails created by windows
 Thumbs.db
 #Ignore files build by Visual Studio
