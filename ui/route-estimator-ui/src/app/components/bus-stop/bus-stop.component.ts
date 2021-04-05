@@ -28,8 +28,6 @@ export class BusStopComponent implements OnInit {
     var requestModel = this.getRequestModel();
     this.apiService.getConfigResponse(requestModel)
       .subscribe((resp) => {
-      console.log('Received response from api');
-      console.log(resp);
       this.routesList = resp.body.routesList;
       console.log(this.routesList);
       this.nextArrivalTime = resp.body.firstArrivalTime;

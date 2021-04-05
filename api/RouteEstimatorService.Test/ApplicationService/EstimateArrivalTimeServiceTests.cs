@@ -8,6 +8,7 @@ namespace RouteEstimatorService.Test.ApplicationService
     using Xunit;
     using Moq;
     using System.Linq;
+    using Microsoft.Extensions.Logging;
 
     public class EstimateArrivalTimeServiceTests
     {
@@ -18,6 +19,7 @@ namespace RouteEstimatorService.Test.ApplicationService
         {
             var currentTime = new DateTime(2021, 04, 05, 01, 45, 00);
             var stopNumber = 1;
+            //var logger = new Mock<ILogger>();
             var estimatorService = new EstimateArrivalTimeService();
 
             var response = await estimatorService.GetRouteEstimates(currentTime, stopNumber);

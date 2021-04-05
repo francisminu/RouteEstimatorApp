@@ -4,6 +4,7 @@
 
 namespace RouteEstimatorService.ApplicationService
 {
+    using Microsoft.Extensions.Logging;
     using RouteEstimatorService.ResponseModels;
     using System;
     using System.Collections.Generic;
@@ -11,6 +12,7 @@ namespace RouteEstimatorService.ApplicationService
     using System.Threading.Tasks;
     public class EstimateArrivalTimeService: IEstimateArrivalTimeService
     {
+        //private readonly ILogger<EstimateArrivalTimeService> _logger;
         private const int visitTimePerSameRoute = 15;
         private const int visitTimePerStopPerRoute = 2;
         private const int numberOfRoutes = 3;
@@ -18,6 +20,7 @@ namespace RouteEstimatorService.ApplicationService
         {
             return await Task.Run(async () =>
             {
+                //_logger.LogDebug($"Input params are: CurrentTime: {currentTime} stopNumber: {stopNumber}");
                 var minutesValue = currentTime.Minute;
                 var timeElapsedByRoute1AtStop1 = minutesValue % visitTimePerSameRoute;
                 var routesData = new List<RouteModel>();
@@ -45,6 +48,7 @@ namespace RouteEstimatorService.ApplicationService
                 {
                     nextArrivalTime -= visitTimePerSameRoute;
                 }
+                //_logger.LogDebug($"Next arrival time for Stop: {stopNumber} Route {routeNumberIndex + 1} is {nextArrivalTime}");
                 return new RouteModel
                 {
                     RouteName = $"Route {routeNumberIndex + 1}",
