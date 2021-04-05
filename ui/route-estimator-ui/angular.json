@@ -1,5 +1,8 @@
 {
   "$schema": "./node_modules/@angular/cli/lib/config/schema.json",
+  "cli": {
+    "analytics": "a1304974-2c7a-4da4-9580-a5c3f64e2459"
+  },
   "version": 1,
   "newProjectRoot": "projects",
   "projects": {
@@ -118,6 +121,11 @@
           }
         }
       }
+    }
+  },
+  "schematics": {
+    "@schematics/angular:component": {
+      "styleext": "scss"
     }
   },
   "defaultProject": "route-estimator-ui"
